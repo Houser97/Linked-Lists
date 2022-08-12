@@ -35,6 +35,7 @@ class LinkedList {
 
         if(!this.head){
             this.head = node;
+            this.tail = node;
         } else {
             let current = this.head;
             while(current.next){
@@ -56,12 +57,13 @@ class LinkedList {
         let current = this.head;
         if(index === 0){
             console.log(current);
+            return current;
         } else {
             for(let i = 0; i < index; i++){
                 current = current.next
                 if(i === index - 1){
                     console.log(current);
-                    return;
+                    return current;
                 }
             }
         }
