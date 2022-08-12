@@ -124,6 +124,38 @@ class LinkedList {
         };
         result += ` -> null`;
         return result;
+    };
+
+    insertAt(value, index){
+        let node = new Node(value);
+        if(index > this.size - 1){
+            return;
+        }
+        if(index === 0){
+            this.head = new Node(value, this.head);
+            this.size++;
+            return;
+        } 
+        if(this.size === 0){
+            this.head = new Node(value);
+            this.size++;
+            return;
+        }
+        let current = this.head;
+        let previous;
+        let count = 0;
+        while(count <= index){
+            previous = current;
+            current = current.next;
+            count ++;
+        };
+        node.next = current;
+        previous.next = node;
+        if(index === this.size -1){
+            this.tail = node;
+            node.next = null;
+        }
+        this.size++;
     }
 
     printList(){
@@ -135,20 +167,27 @@ class LinkedList {
     };
 }
 
-// const test = new LinkedList();
+const test = new LinkedList();
 // test.prepend(5);
 // test.prepend(15);
 // test.prepend(100);
 // test.prepend(105);
 // test.append(200);
 // test.append(1000);
-// console.log(test.toString());
+test.append(1);
+test.append(2);
+test.append(3);
+test.append(4);
+test.prepend(10);
+test.insertAt(123, 4);
+test.insertAt(125, 5);
 // test.pop();
 // console.log(test.contains(100));
 // console.log(test.find(200) + ' index found');
 // // console.log(test.tail);
 // // console.log(test.size);
-// test.printList();
+console.log(test.toString());
+console.log(test.tail);
 
 
 module.exports = LinkedList;
