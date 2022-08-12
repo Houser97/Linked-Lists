@@ -67,6 +67,46 @@ class LinkedList {
         }
     }
 
+    pop(){
+        if(!this.head){
+            throw new Error('The list is empty');
+        };
+        let current = this.head;
+        for(let i = 0; i < this.size; i++){
+            if(i === this.size-2){
+                current.next = null;
+                this.tail = current;
+                this.size--;
+                return;
+            };
+            current = current.next;
+        }
+    }
+
+    contains(value){
+        let current = this.head;
+        while(current){
+            if(current.value === value){
+                return true;
+            };
+            current = current.next
+        };
+        return false;
+    };
+
+    find(value){
+        let current = this.head;
+        let index = 0;
+        while(current){
+            if(current.value === value){
+                return index;
+            };
+            index++;
+            current = current.next;
+        };
+        return null;
+    }
+
     printList(){
         let current = this.head;
         while(current){
@@ -76,10 +116,19 @@ class LinkedList {
     };
 }
 
-const test = new LinkedList();
-test.prepend(5);
-test.prepend(15);
-test.prepend(100);
-test.prepend(102);
-test.printList();
-test.at(0);
+// const test = new LinkedList();
+// test.prepend(5);
+// test.prepend(15);
+// test.prepend(100);
+// test.prepend(105);
+// test.append(200);
+// test.append(1000);
+// test.pop();
+// console.log(test.contains(100));
+// console.log(test.find(200) + ' index found');
+// // console.log(test.tail);
+// // console.log(test.size);
+// test.printList();
+
+
+module.exports = LinkedList;
