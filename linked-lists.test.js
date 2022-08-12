@@ -1,6 +1,6 @@
 const LinkedList = require('./javascript');
 
-describe('prepend() tests', () => {
+describe('prepend() tests. Method to add elements at the beginning of the list.', () => {
 
     let linkedList = new LinkedList();
     let linkedList2 = new LinkedList();
@@ -35,7 +35,7 @@ describe('prepend() tests', () => {
     });
 });
 
-describe('append() tests', () => {
+describe('append() tests. Methot to insert elemenents at the end of the list.', () => {
 
     let linkedList = new LinkedList();
     linkedList.append(1);
@@ -59,7 +59,7 @@ describe('append() tests', () => {
     });
 });
 
-describe('at() tests', () => {
+describe('at() tests. Method to return node at the specified index in the list', () => {
     let linkedList = new LinkedList();
     linkedList.append(12);  // 0
     linkedList.append(15);  // 1
@@ -84,7 +84,7 @@ describe('at() tests', () => {
     });
 });
 
-describe('pop() tests', () => {
+describe('pop() tests. Method to remove last element in the list', () => {
     let linkedList = new LinkedList();
     linkedList.append(12);  // 0
     linkedList.append(15);  // 1
@@ -104,6 +104,62 @@ describe('pop() tests', () => {
         expect(linkedList.tail.value).toBe(23);
     });
 
+});
+
+describe('contains() tests. Method to check if the specified value is in the list.', () => {
+    let linkedList = new LinkedList();
+    linkedList.append(12);  // 0
+    linkedList.append(15);  // 1
+    linkedList.append(14);  // 2
+    linkedList.append(23);  // 3
+    linkedList.append(33);  // 4
+    linkedList.append(76);  // 5
+ 
+    it('It should return true by inserting the number 23', () => {
+        expect(linkedList.contains(23)).toBe(true);
+    });
+
+    it('It should return true by inserting the last number in the list', () => {
+        expect(linkedList.contains(76)).toBe(true);
+    });
+
+    it('It should return true by inserting the first number in the list', () => {
+        expect(linkedList.contains(12)).toBe(true);
+    });
+
+    it('It should return true by inserting the second number in the list', () => {
+        expect(linkedList.contains(12)).toBe(true);
+    });
+
+    it('It should return true by inserting the number 1000', () => {
+        expect(linkedList.contains(1000)).toBe(false);
+    });
+});
+
+describe('find() tests. Method to return index of element in the list or null if number not in the list',() => {
+    let linkedList = new LinkedList();
+    linkedList.append(12);  // 0
+    linkedList.append(15);  // 1
+    linkedList.append(14);  // 2
+    linkedList.append(23);  // 3
+    linkedList.append(33);  // 4
+    linkedList.append(76);  // 5
+
+    it('Should return 2 if 14 is found', () => {
+        expect(linkedList.find(14)).toBe(2);
+    });
+
+    it('Should return 5 if 76 is found', () => {
+        expect(linkedList.find(76)).toBe(5);
+    });
+
+    it('Should return 0 if 12 is found', () => {
+        expect(linkedList.find(76)).toBe(5);
+    });
+
+    it('Should return null if no number is found', () => {
+        expect(linkedList.find(1000)).toBe(null);
+    });
 });
 
 
