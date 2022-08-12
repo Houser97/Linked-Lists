@@ -179,4 +179,17 @@ describe('toString() tests. Method to return a list of the value in the list.', 
     })
 })
 
+describe('insertAt() tests. Method to insert new node at the index given.', () => {
+    let linkedList = new LinkedList();  
+    linkedList.append(12);  // 0
+    linkedList.append(15);  // 1
+    linkedList.insertAt(30, 1);
 
+    it('It should change size correctly', () => {
+        expect(linkedList.size).toBe(3);
+    });
+
+    it('The value inserted must be at index 1', () => {
+        expect(linkedList.find(30)).toBe(1);
+    })
+})

@@ -130,7 +130,7 @@ class LinkedList {
         let node = new Node(value);
         if(index > this.size - 1){
             return;
-        }
+        };
         if(index === 0){
             this.head = new Node(value, this.head);
             this.size++;
@@ -144,14 +144,14 @@ class LinkedList {
         let current = this.head;
         let previous;
         let count = 0;
-        while(count <= index){
+        while(count < index){
             previous = current;
             current = current.next;
             count ++;
         };
         node.next = current;
         previous.next = node;
-        if(index === this.size -1){
+        if(index === this.size){
             this.tail = node;
             node.next = null;
         }
@@ -174,13 +174,10 @@ const test = new LinkedList();
 // test.prepend(105);
 // test.append(200);
 // test.append(1000);
-test.append(1);
-test.append(2);
-test.append(3);
-test.append(4);
-test.prepend(10);
-test.insertAt(123, 4);
-test.insertAt(125, 5);
+test.append(12);  // 0
+test.append(15);  // 1
+test.insertAt(31, 1);
+
 // test.pop();
 // console.log(test.contains(100));
 // console.log(test.find(200) + ' index found');
