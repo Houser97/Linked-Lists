@@ -193,3 +193,21 @@ describe('insertAt() tests. Method to insert new node at the index given.', () =
         expect(linkedList.find(30)).toBe(1);
     })
 })
+
+describe('removeAt() tests. Method to remove node at the index given.', () => {
+    let linkedList = new LinkedList();  
+    linkedList.append(12);  // 0
+    linkedList.append(15);  // 1
+    linkedList.append(34);  // 2
+    linkedList.append(135);  // 3
+
+    it('It should reduce size', () => {
+        linkedList.removeAt(2);
+        linkedList.removeAt(2);
+        expect(linkedList.size).toBe(2);
+    });
+
+    it('It should print trimed list', () => {
+        expect(linkedList.toString()).toBe('(12) -> (15) -> null');
+    });
+})

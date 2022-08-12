@@ -128,7 +128,7 @@ class LinkedList {
 
     insertAt(value, index){
         let node = new Node(value);
-        if(index > this.size - 1){
+        if(index > this.size){
             return;
         };
         if(index === 0){
@@ -149,13 +149,52 @@ class LinkedList {
             current = current.next;
             count ++;
         };
-        node.next = current;
-        previous.next = node;
         if(index === this.size){
+            previous.next = node;
             this.tail = node;
             node.next = null;
+            this.size++;
+            return;
         }
+        node.next = current;
+        previous.next = node;
         this.size++;
+    }
+
+    removeAt(index){
+        if(!this.head){
+            return 'This list is empty.';
+        }
+        if(index >= this.size){
+            return "Index is greater than list's size.";
+        }
+        if(index === 0){
+            let current = this.head;
+            current = current.next;
+            this.head = current;
+            this.size--;
+            return;
+        }
+        let current = this.head;
+        let previous = null;
+        let previousP = null;
+        let count = 0;
+
+        while(count <= index){ 
+            previousP = previous;
+            previous = current;
+            current = current.next;
+            count++;
+        };
+        if(index === this.size -1){
+            previousP.next = null;
+            this.tail = previousP;
+            this.size--;
+            return;
+        }
+        previousP.next = current;
+        this.size--;
+
     }
 
     printList(){
@@ -176,7 +215,15 @@ const test = new LinkedList();
 // test.append(1000);
 test.append(12);  // 0
 test.append(15);  // 1
-test.insertAt(31, 1);
+test.append(4);  // 2
+test.insertAt(31, 3); // 3
+test.insertAt(45, 4); // 4
+test.removeAt(4);
+test.removeAt(3)
+test.removeAt(2)
+test.removeAt(1)
+
+
 
 // test.pop();
 // console.log(test.contains(100));
@@ -184,6 +231,7 @@ test.insertAt(31, 1);
 // // console.log(test.tail);
 // // console.log(test.size);
 console.log(test.toString());
+console.log(test.size);
 console.log(test.tail);
 
 
