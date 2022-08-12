@@ -162,4 +162,21 @@ describe('find() tests. Method to return index of element in the list or null if
     });
 });
 
+describe('toString() tests. Method to return a list of the value in the list.', () => {
+    let linkedList = new LinkedList();
+  
+    it('It should return that the list is empty if it has no values', () => {
+        expect(linkedList.toString()).toBe('This list is empty.');
+    })
+
+    it('It should return the list of elements in the list', () => {
+        linkedList.append(12);  // 0
+        linkedList.append(15);  // 1
+        linkedList.append(14);  // 2
+        linkedList.append(23);  // 3
+
+        expect(linkedList.toString()).toBe('(12) -> (15) -> (14) -> (23) -> null');
+    })
+})
+
 

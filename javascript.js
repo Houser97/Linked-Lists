@@ -109,6 +109,23 @@ class LinkedList {
         return null;
     }
 
+    toString(){
+        let result = '';
+        if(!this.head){
+            return 'This list is empty.';
+        }
+        let current = this.head;
+        result = `(${current.value})`;
+        while(current.next){
+            result += ` -> (${current.next.value})`;
+            current = current.next; //Currrent.next se evalúa en este momento,
+            // pero no se ha asignado, por lo que ahora Current se le asigna para que se evalúe el next
+            // del actual current.next en el siguiente ciclo.
+        };
+        result += ` -> null`;
+        return result;
+    }
+
     printList(){
         let current = this.head;
         while(current){
@@ -125,6 +142,7 @@ class LinkedList {
 // test.prepend(105);
 // test.append(200);
 // test.append(1000);
+// console.log(test.toString());
 // test.pop();
 // console.log(test.contains(100));
 // console.log(test.find(200) + ' index found');
